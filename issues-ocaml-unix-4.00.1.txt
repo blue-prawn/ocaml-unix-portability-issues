@@ -1,0 +1,136 @@
+### List of portability issues for the Unix module of OCaml 4.00.1
+
+## Functions not implemented for win32:
+ - Unix.fork
+ - Unix.wait
+ - Unix.getppid
+ - Unix.nice
+ - Unix.truncate
+ - Unix.ftruncate
+ - Unix.LargeFile.truncate
+ - Unix.LargeFile.ftruncate
+ - Unix.fchmod
+ - Unix.chown
+ - Unix.fchown
+ - Unix.umask
+ - Unix.chroot
+ - Unix.mkfifo
+ - Unix.readlink
+ - Unix.symlink
+ - Unix.kill
+ - Unix.sigprocmask
+ - Unix.sigpending
+ - Unix.sigsuspend
+ - Unix.pause
+ - Unix.alarm
+ - Unix.getitimer
+ - Unix.setitimer
+ - Unix.setuid
+ - Unix.setgid
+ - Unix.setgroups
+ - Unix.initgroups
+ - Unix.socketpair
+ - Unix.establish_server
+ - Unix.tcgetattr
+ - Unix.tcsetattr
+ - Unix.tcsendbreak
+ - Unix.tcdrain
+ * Unix.tcflush
+ * Unix.tcflow
+ * Unix.setsid
+
+
+## Elements with different implementation:
+ - type Unix.file_descr
+
+ - val Unix.stdin
+ - val Unix.stdout
+ - val Unix.stderr
+
+ - fun Unix.lstat
+ - fun Unix.isatty
+ - fun Unix.LargeFile.lstat
+
+ - type Unix.dir_handle
+
+ - fun Unix.opendir
+ - fun Unix.readdir
+ - fun Unix.rewinddir
+ - fun Unix.closedir
+ - fun Unix.getuid
+ - fun Unix.geteuid
+ - fun Unix.getgid
+ - fun Unix.getegid
+ - fun Unix.getgroups
+ - fun Unix.getaddrinfo
+ - fun Unix.getnameinfo
+ - fun Unix.system
+ - fun Unix.create_process
+ - fun Unix.create_process_env
+ - fun Unix.open_process_in
+ - fun Unix.open_process_out
+ - fun Unix.open_process
+ - fun Unix.open_process_full
+ - fun Unix.close_process_in
+ - fun Unix.close_process_out
+ - fun Unix.close_process
+ - fun Unix.close_process_full
+ - fun Unix.open_connection
+
+
+## Functions with different stubs:
+
+ - Unix.in_channel_of_descr :
+    "caml_ml_open_descriptor_in"
+    "win_inchannel_of_filedescr"
+
+ - Unix.out_channel_of_descr :
+    "caml_ml_open_descriptor_out"
+    "win_outchannel_of_filedescr"
+
+ - Unix.descr_of_in_channel :
+    "caml_channel_descriptor"
+    "win_filedescr_of_channel"
+
+ - Unix.descr_of_out_channel :
+    "caml_channel_descriptor"
+    "win_filedescr_of_channel"
+
+ - Unix.set_close_on_exec :
+    "unix_set_close_on_exec"
+    "win_set_close_on_exec"
+
+ - Unix.clear_close_on_exec :
+    "unix_clear_close_on_exec"
+    "win_clear_close_on_exec"
+
+ - Unix.getuid : "unix_getuid" / no-stub
+ - Unix.geteuid : "unix_geteuid" / no-stub
+ - Unix.setuid : "unix_setuid" / no-stub
+
+ - Unix.getgid : "unix_getgid" / no-stub
+ - Unix.getegid : "unix_getegid" / no-stub
+ - Unix.setgid : "unix_setgid" / no-stub
+
+ - Unix.getgroups : "unix_getgroups" / no-stub
+ - Unix.setgroups : "unix_setgroups" / no-stub
+ - Unix.initgroups : "unix_initgroups" / no-stub
+
+ - Unix.getlogin : "unix_getlogin" / no-stub
+ - Unix.getpwnam : "unix_getpwnam" / no-stub
+ - Unix.getgrnam : "unix_getgrnam" / no-stub
+ - Unix.getpwuid : "unix_getpwuid" / no-stub
+ - Unix.getgrgid : "unix_getgrgid" / no-stub
+
+ - Unix.system : no-stub / "win_system"
+
+ - Unix.tcgetattr : "unix_tcgetattr" / no-stub
+
+ - Unix.tcsetattr : "unix_tcsetattr" / no-stub
+ - Unix.tcsendbreak : "unix_tcsendbreak" / no-stub
+ - Unix.tcdrain : "unix_tcdrain" / no-stub
+
+ - Unix.tcflush : "unix_tcflush" / no-stub
+ - Unix.tcflow : "unix_tcflow" / no-stub
+ - Unix.setsid : "unix_setsid" / no-stub
+

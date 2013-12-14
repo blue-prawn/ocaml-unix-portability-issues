@@ -1,0 +1,122 @@
+### List of portability issues for the Unix module of OCaml 4.01.0
+
+## Functions not implemented for win32:
+ - Unix.fork
+ - Unix.wait
+ - Unix.getppid
+ - Unix.nice
+ - Unix.truncate
+ - Unix.ftruncate
+ - Unix.LargeFile.truncate
+ - Unix.LargeFile.ftruncate
+ - Unix.fchmod
+ - Unix.chown
+ - Unix.fchown
+ - Unix.umask
+ - Unix.chroot
+ - Unix.mkfifo
+ - Unix.readlink
+ - Unix.symlink
+ - Unix.kill
+ - Unix.sigprocmask
+ - Unix.sigpending
+ - Unix.sigsuspend
+ - Unix.pause
+ - Unix.alarm
+ - Unix.getitimer
+ - Unix.setitimer
+ - Unix.setuid
+ - Unix.setgid
+ - Unix.setgroups
+ - Unix.initgroups
+ - Unix.socketpair
+ - Unix.establish_server
+ - Unix.tcgetattr
+ - Unix.tcsetattr
+ - Unix.tcsendbreak
+ - Unix.tcdrain
+ - Unix.tcflush
+ - Unix.tcflow
+ - Unix.setsid
+
+
+## Values / Types with different implementations:
+ - type Unix.file_descr
+
+ - val Unix.stdin
+ - val Unix.stdout
+ - val Unix.stderr
+
+ - fun Unix.isatty
+ - fun Unix.lstat
+ - fun Unix.LargeFile.lstat
+
+ - type dir_handle
+
+ - fun Unix.opendir
+ - fun Unix.readdir
+ - fun Unix.rewinddir
+ - fun Unix.closedir
+ - fun Unix.getuid
+ - fun Unix.geteuid
+ - fun Unix.getgid
+ - fun Unix.getegid
+ - fun Unix.getgroups
+ - fun Unix.getlogin
+ + fun Unix.getpwnam
+ + fun Unix.getgrnam
+ + fun Unix.getpwuid
+ + fun Unix.getgrgid
+ - fun Unix.create_process
+ - fun Unix.create_process_env
+ * fun Unix.system
+ - fun Unix.open_process_in
+ - fun Unix.open_process_out
+ - fun Unix.open_process
+ - fun Unix.open_process_full
+ - fun Unix.close_process_in
+ - fun Unix.close_process_out
+ - fun Unix.close_process
+ - fun Unix.close_process_full
+ - fun Unix.open_connection
+
+
+## Functions with different stubs:
+ - Unix.waitpid :
+     "unix_waitpid"
+     "win_waitpid"
+
+ - Unix.in_channel_of_descr :
+    "caml_ml_open_descriptor_in"
+    "win_inchannel_of_filedescr"
+
+ - Unix.out_channel_of_descr :
+    "caml_ml_open_descriptor_out"
+    "win_outchannel_of_filedescr"
+
+ - Unix.descr_of_in_channel :
+    "caml_channel_descriptor"
+    "win_filedescr_of_channel"
+
+ - Unix.descr_of_out_channel :
+    "caml_channel_descriptor"
+    "win_filedescr_of_channel"
+
+ - Unix.set_close_on_exec :
+    "unix_set_close_on_exec"
+    "win_set_close_on_exec"
+
+ - Unix.clear_close_on_exec :
+    "unix_clear_close_on_exec"
+    "win_clear_close_on_exec"
+
+ * Unix.system :
+    "win_system"
+
+
+## Initialisation functions/stubs for win32:
+ - startup : "win_startup"
+ - cleanup : "win_cleanup"
+
+ - Printexc.register_printer match e with E2BIG -> "E2BIG"
+
