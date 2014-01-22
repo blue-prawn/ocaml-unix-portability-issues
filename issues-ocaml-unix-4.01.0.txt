@@ -40,7 +40,7 @@
  - Unix.setsid
 
 
-## Values / Types with different implementations:
+## Elements with different implementation:
  - type Unix.file_descr
 
  - val Unix.stdin
@@ -51,7 +51,7 @@
  - fun Unix.lstat
  - fun Unix.LargeFile.lstat
 
- - type dir_handle
+ - type Unix.dir_handle
 
  - fun Unix.opendir
  - fun Unix.readdir
