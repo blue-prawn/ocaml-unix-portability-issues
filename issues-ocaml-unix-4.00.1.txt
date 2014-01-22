@@ -47,8 +47,8 @@
  - val Unix.stdout
  - val Unix.stderr
 
- - fun Unix.lstat
  - fun Unix.isatty
+ - fun Unix.lstat
  - fun Unix.LargeFile.lstat
 
  - type Unix.dir_handle
