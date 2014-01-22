@@ -3,6 +3,6 @@ all:
 	sh contents.sh
 	sh extracts.sh
 	sh renames.sh
-	sh strata-excavation.sh
+	sh strata-excavates.sh
 clean:
 	sh cleans.sh
